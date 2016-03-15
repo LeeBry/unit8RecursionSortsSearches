@@ -36,7 +36,7 @@ public class LogSpiralPanel extends JPanel
       //
       if ( side <=5)
       {
-          break;
+          
       }
       else
       {
