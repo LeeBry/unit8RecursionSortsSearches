@@ -11,26 +11,29 @@ public class TreePanel extends JPanel
     private final int PANEL_WIDTH= 500;
     private final int PANEL_HEIGHT=500;
     
-    private final int R_TOPX=100;
-    private final int R_TOPY=100;
+    private final int x1=100;
+    private final int y1=100;
     // points for the right branch
-    private final int L_TOPX=100;
-    private final int L_TOPY=100; 
+    private final int x2=100;
+    private final int y3=100; 
     // points for the left branch
-    public int originX;
-    public int originY;
+    private int originX;
+    private int originY;
     // Origin of the original branch
-    public Color branchColor;
+    private Color branchColor;
     // Color of the branch
-    public int branchLevel;
+    private int branchLength= 100;
     // This is the branch level
+    private double angle;
+    // angle
+    private double factor;
     /**
      * Constructor for objects of class TreePanel
      */
     public TreePanel(int branch)
     {
-      branchLevel = branch;
-      setBackground (Color.black);
+      branchLength = branch;
+      //setBackground (Color.green);
       setPreferredSize (new Dimension(PANEL_WIDTH, PANEL_HEIGHT));   
     }
     
@@ -40,17 +43,21 @@ public class TreePanel extends JPanel
 
     }
     
-    public void drawFractal (int branch, int originX, int originY, 
-                             int x2, int y2, Graphics g2)
+    public void drawFractal (int originX, int originY, int length,
+                             double angle, Graphics2D g2)
     {
-      
-      if (branch <= 10)
+      int lengthSin, lengthCos;
+      lengthSin= (int)Math.sin(angle*Math.PI/180);
+      lengthSin= lengthSin*length;
+      lengthCos= (int)Math.cos(angle*Math.PI/180);
+      lengthCos= lengthCos*length;
+      if (true && length>15)
       {
-          g2.drawLine(originX, originY, x2,y2);
+          g2.drawLine(originX,originY,0,length);
       }
       else
       {
-         g2.drawLine (originX, originY, x2, y2);
+         // call drawFractal, and drawLine twice for left and right side
      
       }
     }
