@@ -17,12 +17,12 @@ public class TreePanel extends JPanel
     private final int L_TOPX=100;
     private final int L_TOPY=100; 
     // points for the left branch
-    public int originX;
-    public int originY;
+    private int originX;
+    private int originY;
     // Origin of the original branch
-    public Color branchColor;
+    private Color branchColor;
     // Color of the branch
-    public int branchLevel;
+    private int branchLevel;
     // This is the branch level
     /**
      * Constructor for objects of class TreePanel
