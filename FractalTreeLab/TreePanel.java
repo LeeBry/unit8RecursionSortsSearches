@@ -17,12 +17,12 @@ public class TreePanel extends JPanel
     private final int L_TOPX=100;
     private final int L_TOPY=100; 
     // points for the left branch
-    private int originX;
-    private int originY;
+    public int originX;
+    public int originY;
     // Origin of the original branch
-    private Color branchColor;
+    public Color branchColor;
     // Color of the branch
-    private int branchLevel;
+    public int branchLevel;
     // This is the branch level
     /**
      * Constructor for objects of class TreePanel
@@ -44,8 +44,11 @@ public class TreePanel extends JPanel
                              int x2, int y2, Graphics g2)
     {
       
-
       if (branch <= 10)
+      {
+          g2.drawLine(originX, originY, x2,y2);
+      }
+      else
       {
          g2.drawLine (originX, originY, x2, y2);
      
