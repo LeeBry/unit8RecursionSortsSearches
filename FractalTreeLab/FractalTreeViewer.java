@@ -8,7 +8,7 @@ import javax.swing.*;
  * @author (Bryce Lee) 
  * @version (3/15/2016)
  */
-public class FractalTreeViewer
+public class FractalTreeViewer extends TreePanel
 {
     private final int WIDTH = 600;
     private final int HEIGHT= 600;
@@ -26,7 +26,7 @@ public class FractalTreeViewer
     
     public FractalTreeViewer()
     {
-        draw = new TreePanel(90);
+        draw = new TreePanel();
         panel = new JPanel();
         panel.add(draw);
         

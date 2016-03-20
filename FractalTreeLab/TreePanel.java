@@ -14,15 +14,15 @@ public class TreePanel extends JPanel
     private int startX= 250;
     private int startY=350;
     private Color branchColor;
-    private double branchLength;
-    private double branchAngle = 50; 
+    private double branchLength=100;
+    private double branchAngle = 0; 
     private double factorLength;
     /**
      * Constructor for objects of class TreePanel
      */
-    public TreePanel(double branch)
+    public TreePanel()
     {
-        this.branchLength = branch;
+        this.branchLength = branchLength;
         this.branchAngle= branchAngle;
         this.factorLength= 0.75;
         //Inside constructor: branchLength= 100, branchAngle= 50, factorLength= 0.8, l & rAngle= 0.0
@@ -38,31 +38,24 @@ public class TreePanel extends JPanel
         }
         else
         {
+            double angle1 = angle-15;
+            double angle2= angle+15;
+            // 1. should create the vShape
             branchLength= (int)this.branchLength*factorLength;
             this.branchLength= (int)branchLength;
             System.out.println("This is BranchLength " +this.branchLength);
-            // this sets the new branch Length
-            double lAngle = branchLength * Math.sin(Math.toRadians(angle)); //new X
-            double rAngle = branchLength * Math.cos(Math.toRadians(angle)); // new Y
-            
-            double lAngle2 = branchLength * Math.sin(Math.toRadians(angle-30)); //new X
-            double rAngle2 = branchLength * Math.cos(Math.toRadians(angle-30)); // new Y
-            System.out.println("L and R "+lAngle+" "+rAngle);
-            // Then convert to int version to find the new X and Y
-            int x2 = y1-(int)lAngle;
-            int y2 = x1-(int)rAngle;
-            
-            int x3 = y1-(int)lAngle2;
-            int y3 = x1-(int)rAngle2;
-            System.out.println("x2 and y2 "+x2+" "+y2);
-            // cordinates for line to be drawn  
-            
-            page.draw(new Line2D.Double(x1,y1, x2, y2)); 
-            page.draw(new Line2D.Double(x1,y1, x3, y3));
-            drawFractal(x2, y2, (int)this.branchLength, angle, page); 
-            drawFractal(x3, y3, (int)this.branchLength, angle-40, page); 
-            // these two drawFractals should take care of the other 2 lines
-            
+            // 2. this sets the new branch Length
+
+            int endX1 = (int)(x1 - branchLength*Math.sin(Math.toRadians(angle1)));
+            int endY1 = (int)(y1 - branchLength*Math.cos(Math.toRadians(angle1)));
+            // points for first line.
+            int endX2 = (int)(x1 - branchLength*Math.sin(Math.toRadians(angle2)));
+            int endY2 = (int)(y1 - branchLength*Math.cos(Math.toRadians(angle2)));
+            // points for second line
+            page.draw(new Line2D.Double(x1,y1, endX1, endY1)); 
+            page.draw(new Line2D.Double(x1,y1, endX2, endY2)); 
+            drawFractal(endX2,endY2,(int) branchLength,angle2, page);
+            drawFractal(endX1,endY1,(int) branchLength,angle2, page);
         }
     }
 
@@ -74,6 +67,7 @@ public class TreePanel extends JPanel
         g2.drawLine(PANEL_WIDTH/2, PANEL_HEIGHT, startX, startY); //draws the trunk of the tree
         branchColor = new Color(0,0,255);
         drawFractal(PANEL_WIDTH/2, startY, (int)branchLength, branchAngle, g2);
+        drawFractal(PANEL_WIDTH/2,startY,(int) branchLength,-branchAngle, g2);
     }
 
 }
