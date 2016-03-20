@@ -56,10 +56,10 @@ public class TreePanel extends JPanel
             //             drawFractal(endX2,endY2,(int) branchLength,angle2, page);
             //             System.out.println("            values2:"+ endX2+" "+endY2);
 
-            int endX1 = (int)(x1 - branchLength*Math.sin(Math.toRadians(angle1)));
-            int endY1 = (int)(y1 - branchLength*Math.cos(Math.toRadians(angle1)));
-            int endX2 = (int)(x1 - branchLength*Math.sin(Math.toRadians(angle2)));
-            int endY2 = (int)(y1 - branchLength*Math.cos(Math.toRadians(angle2)));
+            int endX1 = (int)(x1 - newBranchLength*Math.sin(Math.toRadians(angle1)));
+            int endY1 = (int)(y1 - newBranchLength*Math.cos(Math.toRadians(angle1)));
+            int endX2 = (int)(x1 - newBranchLength*Math.sin(Math.toRadians(angle2)));
+            int endY2 = (int)(y1 - newBranchLength*Math.cos(Math.toRadians(angle2)));
             page.draw(new Line2D.Double(x1,y1, endX1, endY1)); 
             page.draw(new Line2D.Double(x1,y1, endX2, endY2)); 
             drawFractal(endX2,endY2,(int) newBranchLength,angle2, page);
