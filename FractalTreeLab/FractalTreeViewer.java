@@ -10,11 +10,9 @@ import javax.swing.*;
  */
 public class FractalTreeViewer
 {
-    private final int WIDTH = 500;
-    private final int HEIGHT= 500;
+    private final int WIDTH = 600;
+    private final int HEIGHT= 600;
     // Dimensions of the frame
-    private final int BRANCHING= 10;
-    // Number of times the tree will branch off
     private JPanel panel;
     private TreePanel draw;
     private JFrame frame;
@@ -28,7 +26,7 @@ public class FractalTreeViewer
     
     public FractalTreeViewer()
     {
-        draw = new TreePanel(100);
+        draw = new TreePanel(90);
         panel = new JPanel();
         panel.add(draw);
         
