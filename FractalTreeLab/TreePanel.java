@@ -24,7 +24,7 @@ public class TreePanel extends JPanel
     {
         this.branchLength = branchLength;
         this.branchAngle= branchAngle;
-        this.factorLength= 0.75;
+        this.factorLength= 0.8;
         setBackground (Color.white);
         setPreferredSize (new Dimension(PANEL_WIDTH, PANEL_HEIGHT));   
     }
@@ -42,9 +42,8 @@ public class TreePanel extends JPanel
             // 1. should create the vShape
             double newBranchLength= (int)length*factorLength;
             newBranchLength= (int)newBranchLength;
-            System.out.println("This is BranchLength " +this.branchLength);
             // 2. this sets the new branch Length
-
+            //Attempt 1,2,3,4 : Reason why wrong: Using the local variable instead ot parameter variables
             //             int endX1 = (int)(x1 - branchLength*Math.sin(Math.toRadians(angle1)));
             //             int endY1 = (int)(y1 - branchLength*Math.cos(Math.toRadians(angle1)));
             //             page.draw(new Line2D.Double(x1,y1, endX1, endY1)); 
@@ -55,17 +54,19 @@ public class TreePanel extends JPanel
             //             page.draw(new Line2D.Double(x1,y1, endX2, endY2)); 
             //             drawFractal(endX2,endY2,(int) branchLength,angle2, page);
             //             System.out.println("            values2:"+ endX2+" "+endY2);
-
+            // Attempt 5: changed all variables to parameter values, so it will not confuse the values.
             int endX1 = (int)(x1 - newBranchLength*Math.sin(Math.toRadians(angle1)));
             int endY1 = (int)(y1 - newBranchLength*Math.cos(Math.toRadians(angle1)));
+            // calculating x and y value for 1st point
             int endX2 = (int)(x1 - newBranchLength*Math.sin(Math.toRadians(angle2)));
             int endY2 = (int)(y1 - newBranchLength*Math.cos(Math.toRadians(angle2)));
+            // calculating x2 and y2 value for 2nd point
             page.draw(new Line2D.Double(x1,y1, endX1, endY1)); 
             page.draw(new Line2D.Double(x1,y1, endX2, endY2)); 
+
             drawFractal(endX2,endY2,(int) newBranchLength,angle2, page);
             drawFractal(endX1,endY1,(int) newBranchLength,angle1, page);
-            System.out.println("values1:"+ endX1+" "+endY1+ " BranchLength/ A :"+newBranchLength+" "+ angle1);
-            System.out.println("            values2:"+ endX2+" "+endY2+ " BranchLength/ A :"+newBranchLength+" "+ angle2);
+
 
         }
     }
@@ -74,7 +75,7 @@ public class TreePanel extends JPanel
     {
         Graphics2D g2= (Graphics2D) page;
         super.paintComponent(page);
-        g2.setStroke(new BasicStroke(3));
+        g2.setStroke(new BasicStroke(2));
         g2.drawLine(PANEL_WIDTH/2, PANEL_HEIGHT, startX, startY); //draws the trunk of the tree
         branchColor = new Color(0,255,255);
         drawFractal(PANEL_WIDTH/2, startY, (int)branchLength, branchAngle, g2);
