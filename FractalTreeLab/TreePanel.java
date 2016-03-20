@@ -15,7 +15,7 @@ public class TreePanel extends JPanel
     private int startY=350;
     private Color branchColor;
     private double branchLength;
-    private double branchAngle = 45; 
+    private double branchAngle = 50; 
     private double factorLength;
     /**
      * Constructor for objects of class TreePanel
@@ -40,7 +40,7 @@ public class TreePanel extends JPanel
         {
             branchLength= (int)this.branchLength*factorLength;
             this.branchLength= (int)branchLength;
-            System.out.println("This is BL" +branchLength);
+            System.out.println("This is BranchLength " +this.branchLength);
             // this sets the new branch Length
             double lAngle = branchLength * Math.sin(Math.toRadians(angle)); //new X
             double rAngle = branchLength * Math.cos(Math.toRadians(angle)); // new Y
@@ -59,8 +59,8 @@ public class TreePanel extends JPanel
             
             page.draw(new Line2D.Double(x1,y1, x2, y2)); 
             page.draw(new Line2D.Double(x1,y1, x3, y3));
-            drawFractal(x2, y2, (int)branchLength, angle, page); 
-            //drawFractal(x2, y2, (int)branchLength, angle-40, page); 
+            drawFractal(x2, y2, (int)this.branchLength, angle, page); 
+            drawFractal(x3, y3, (int)this.branchLength, angle-40, page); 
             // these two drawFractals should take care of the other 2 lines
             
         }
@@ -73,7 +73,7 @@ public class TreePanel extends JPanel
         g2.setStroke(new BasicStroke(3));
         g2.drawLine(PANEL_WIDTH/2, PANEL_HEIGHT, startX, startY); //draws the trunk of the tree
         branchColor = new Color(0,0,255);
-        drawFractal(startX, startY, (int)branchLength, branchAngle, g2);
+        drawFractal(PANEL_WIDTH/2, startY, (int)branchLength, branchAngle, g2);
     }
 
 }
