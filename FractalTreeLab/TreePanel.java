@@ -32,7 +32,7 @@ public class TreePanel extends JPanel
     public void drawFractal (int x1, int y1, int length, double angle, Graphics2D page)
     {
         // Dont use instance variables. Use the parameter values
-        if (branchLength<15)
+        if (length<15)
         {//This should make it terminate   
         }
         else
@@ -40,21 +40,33 @@ public class TreePanel extends JPanel
             double angle1 = angle-15;
             double angle2= angle+15;
             // 1. should create the vShape
-            branchLength= (int)this.branchLength*factorLength;
-            this.branchLength= (int)branchLength;
+            double newBranchLength= (int)length*factorLength;
+            newBranchLength= (int)newBranchLength;
             System.out.println("This is BranchLength " +this.branchLength);
             // 2. this sets the new branch Length
 
+            //             int endX1 = (int)(x1 - branchLength*Math.sin(Math.toRadians(angle1)));
+            //             int endY1 = (int)(y1 - branchLength*Math.cos(Math.toRadians(angle1)));
+            //             page.draw(new Line2D.Double(x1,y1, endX1, endY1)); 
+            //             drawFractal(endX1,endY1,(int) branchLength,angle1, page);
+            //             System.out.println("values:"+ endX1+" "+endY1);
+            //             int endX2 = (int)(x1 - branchLength*Math.sin(Math.toRadians(angle2)));
+            //             int endY2 = (int)(y1 - branchLength*Math.cos(Math.toRadians(angle2)));
+            //             page.draw(new Line2D.Double(x1,y1, endX2, endY2)); 
+            //             drawFractal(endX2,endY2,(int) branchLength,angle2, page);
+            //             System.out.println("            values2:"+ endX2+" "+endY2);
+
             int endX1 = (int)(x1 - branchLength*Math.sin(Math.toRadians(angle1)));
             int endY1 = (int)(y1 - branchLength*Math.cos(Math.toRadians(angle1)));
-            // points for first line.
             int endX2 = (int)(x1 - branchLength*Math.sin(Math.toRadians(angle2)));
             int endY2 = (int)(y1 - branchLength*Math.cos(Math.toRadians(angle2)));
-            // points for second line
             page.draw(new Line2D.Double(x1,y1, endX1, endY1)); 
             page.draw(new Line2D.Double(x1,y1, endX2, endY2)); 
-            drawFractal(endX2,endY2,(int) branchLength,angle2, page);
-            drawFractal(endX1,endY1,(int) branchLength,angle2, page);
+            drawFractal(endX2,endY2,(int) newBranchLength,angle2, page);
+            drawFractal(endX1,endY1,(int) newBranchLength,angle1, page);
+            System.out.println("values1:"+ endX1+" "+endY1+ " BranchLength/ A :"+newBranchLength+" "+ angle1);
+            System.out.println("            values2:"+ endX2+" "+endY2+ " BranchLength/ A :"+newBranchLength+" "+ angle2);
+
         }
     }
 
