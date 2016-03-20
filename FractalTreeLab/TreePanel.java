@@ -1,6 +1,7 @@
 import java.awt.*;
 import javax.swing.JPanel;
 import java.awt.geom.Line2D;
+import java.util.Random;
 /**
  * Write a description of class TreePanel here.
  * 
@@ -17,6 +18,7 @@ public class TreePanel extends JPanel
     private double branchLength=100;
     private double branchAngle = 0; 
     private double factorLength;
+    Random gen= new Random();
     /**
      * Constructor for objects of class TreePanel
      */
@@ -25,7 +27,7 @@ public class TreePanel extends JPanel
         this.branchLength = branchLength;
         this.branchAngle= branchAngle;
         this.factorLength= 0.8;
-        setBackground (Color.white);
+        setBackground (Color.black);
         setPreferredSize (new Dimension(PANEL_WIDTH, PANEL_HEIGHT));   
     }
 
@@ -61,6 +63,7 @@ public class TreePanel extends JPanel
             int endX2 = (int)(x1 - newBranchLength*Math.sin(Math.toRadians(angle2)));
             int endY2 = (int)(y1 - newBranchLength*Math.cos(Math.toRadians(angle2)));
             // calculating x2 and y2 value for 2nd point
+            page.setColor(new Color(255,255,255));
             page.draw(new Line2D.Double(x1,y1, endX1, endY1)); 
             page.draw(new Line2D.Double(x1,y1, endX2, endY2)); 
 
@@ -76,8 +79,8 @@ public class TreePanel extends JPanel
         Graphics2D g2= (Graphics2D) page;
         super.paintComponent(page);
         g2.setStroke(new BasicStroke(2));
+        g2.setColor(new Color(255,255,255));
         g2.drawLine(PANEL_WIDTH/2, PANEL_HEIGHT, startX, startY); //draws the trunk of the tree
-        branchColor = new Color(0,255,255);
         drawFractal(PANEL_WIDTH/2, startY, (int)branchLength, branchAngle, g2);
     }
 
