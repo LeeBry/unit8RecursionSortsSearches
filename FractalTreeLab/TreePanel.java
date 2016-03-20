@@ -25,7 +25,6 @@ public class TreePanel extends JPanel
         this.branchLength = branchLength;
         this.branchAngle= branchAngle;
         this.factorLength= 0.75;
-        //Inside constructor: branchLength= 100, branchAngle= 50, factorLength= 0.8, l & rAngle= 0.0
         setBackground (Color.white);
         setPreferredSize (new Dimension(PANEL_WIDTH, PANEL_HEIGHT));   
     }
@@ -65,9 +64,8 @@ public class TreePanel extends JPanel
         super.paintComponent(page);
         g2.setStroke(new BasicStroke(3));
         g2.drawLine(PANEL_WIDTH/2, PANEL_HEIGHT, startX, startY); //draws the trunk of the tree
-        branchColor = new Color(0,0,255);
+        branchColor = new Color(0,255,255);
         drawFractal(PANEL_WIDTH/2, startY, (int)branchLength, branchAngle, g2);
-        drawFractal(PANEL_WIDTH/2,startY,(int) branchLength,-branchAngle, g2);
     }
 
 }
