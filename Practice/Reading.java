@@ -14,25 +14,39 @@ public class Reading
         int words=0;
         int lines=0;
         int characters=0;
-       
-        Scanner scan= new Scanner(System.in);
+        String word;
+        String line;
+        String fileName;
+        Scanner scan= new Scanner(System.in); //Scanner
         System.out.println("Please provide the file: ");
-        File inputFile= new File(scan.nextLine());
-        Scanner s1= new Scanner(inputFile);
-        Scanner s2= new Scanner(inputFile);
-        s1.useDelimiter(" ");
+        fileName= scan.nextLine();
+        File inputFile= new File(fileName);
+        Scanner s1= new Scanner(inputFile); //Scanner
+        Scanner s2= new Scanner(inputFile);//Scanner
+        Scanner s3= new Scanner(inputFile);
+        //s1.useDelimiter(" ");
         while (s1.hasNext())
         {
-            words+=1;        
+            words++;  
             s1.next();
         }
         
         while (s2.hasNextLine())
         {
-            lines+=1;
+            lines++;
             s2.nextLine();
         }
-        System.out.println("This file has "+ words+ " word(s)"+"\n"+" And"+lines+"Lines");
+        
+        while (s3.hasNext())
+        {
+          s3.useDelimiter("");// Lines count as 2 charcters
+          characters++;
+          s3.next();
+          
+        }
+        System.out.println("This file has "+ words+" Word(s)");
+        System.out.println(lines+" Line(s)");
+        System.out.println(characters+ " Character(s)");
        
     }
 }
