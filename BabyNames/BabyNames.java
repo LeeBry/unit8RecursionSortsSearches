@@ -8,13 +8,15 @@ public class BabyNames
 
    public static void main(String[] args) throws FileNotFoundException
    {  
-    
+      // 21,250,677 male births and 20,297,093 female births.
       Scanner scan= new Scanner (System.in);
       System.out.println("File name: ");
       File nameFile= new File(scan.nextLine());
       Scanner in = new Scanner(nameFile);
-      RecordReader boys = new RecordReader(LIMIT);
-      RecordReader girls = new RecordReader(LIMIT);
+      int maleBirth= 21250677;
+      int femaleBirth= 20297093;
+      RecordReader boys = new RecordReader(LIMIT, maleBirth);
+      RecordReader girls = new RecordReader(LIMIT, femaleBirth);
       
       while (boys.hasMore() || girls.hasMore())
       {
