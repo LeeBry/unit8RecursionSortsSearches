@@ -21,10 +21,12 @@ public class Reading
         System.out.println("Please provide the file: ");
         fileName= scan.nextLine();
         File inputFile= new File(fileName);
-        Scanner s1= new Scanner(inputFile); //Scanner
-        Scanner s2= new Scanner(inputFile);//Scanner
-        Scanner s3= new Scanner(inputFile);
-        //s1.useDelimiter(" ");
+        Scanner s1= new Scanner(inputFile); //Scanner 
+        Scanner s2= new Scanner(inputFile); //Scanner
+        Scanner s3= new Scanner(inputFile); //Scanner
+        // using 3 scanners for each variable we are finding. 
+        // In this case, words, line, and characters
+       
         while (s1.hasNext())
         {
             words++;  
