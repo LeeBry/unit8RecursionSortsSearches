@@ -2,6 +2,7 @@ import java.awt.*;
 import javax.swing.JPanel;
 import java.awt.geom.Line2D;
 import java.util.Random;
+import java.util.Scanner;
 /**
  * Write a description of class TreePanel here.
  * 
@@ -25,7 +26,17 @@ public class TreePanel extends JPanel
     public TreePanel()
     {
         this.branchLength = branchLength;
-        this.branchAngle= branchAngle;
+        System.out.println("Do you want to provide a branch angle? (y/n)");
+        Scanner in= new Scanner(System.in);
+        if(in.next().equals("y"))
+        {
+            System.out.println("Please provide a angle");
+            this.branchAngle= in.nextInt();
+        }
+        else
+        {
+          this.branchAngle= branchAngle;
+        }
         this.factorLength= 0.8;
         setBackground (Color.black);
         setPreferredSize (new Dimension(PANEL_WIDTH, PANEL_HEIGHT));   
@@ -39,8 +50,8 @@ public class TreePanel extends JPanel
         }
         else
         {
-            double angle1 = angle-15;
-            double angle2= angle+15;
+            double angle1 = angle-20;
+            double angle2= angle+20;
             // 1. should create the vShape
             double newBranchLength= (int)length*factorLength;
             newBranchLength= (int)newBranchLength;
@@ -78,7 +89,7 @@ public class TreePanel extends JPanel
     {
         Graphics2D g2= (Graphics2D) page;
         super.paintComponent(page);
-        g2.setStroke(new BasicStroke(2));
+        g2.setStroke(new BasicStroke(3));
         g2.setColor(new Color(255,255,255));
         g2.drawLine(PANEL_WIDTH/2, PANEL_HEIGHT, startX, startY); //draws the trunk of the tree
         drawFractal(PANEL_WIDTH/2, startY, (int)branchLength, branchAngle, g2);

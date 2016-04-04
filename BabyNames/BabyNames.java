@@ -15,18 +15,24 @@ public class BabyNames
       Scanner in = new Scanner(nameFile);
       int maleBirth= 21250677;
       int femaleBirth= 20297093;
+      System.out.println("maleBirth: "+maleBirth+" femaleBirth: "+femaleBirth);
       RecordReader boys = new RecordReader(LIMIT, maleBirth);
       RecordReader girls = new RecordReader(LIMIT, femaleBirth);
       
-      while (boys.hasMore() || girls.hasMore())
-      {
-         int rank = in.nextInt();
-         System.out.print(rank + " ");
-         boys.process(in);
-         girls.process(in);
-         System.out.println();
-      }
-
+//       while (boys.hasMore() || girls.hasMore())
+//       {
+//          int rank = in.nextInt();
+//          System.out.print(rank + " ");
+//          boys.process(in);
+//          girls.process(in);
+//          System.out.println();
+//       }
+   int count=0;
+        while(count !=10)
+        {
+            System.out.println(in.nextLine());
+            count++;
+        }
       in.close();
    }
 }   
