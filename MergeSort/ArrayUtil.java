@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Arrays;
 
 /**
    This class contains utility methods for array manipulation.
@@ -6,7 +7,7 @@ import java.util.Random;
 public class ArrayUtil
 { 
    private static Random generator = new Random();
-
+   private static String list= "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
    /**
       Creates an array filled with random values.
       @param length the length of the array
@@ -37,5 +38,28 @@ public class ArrayUtil
       a[i] = a[j];
       a[j] = temp;
    }
+   
+   public static String [] randomStringArray( int length, int numChars)
+   {
+       String[] list = new String[length];
+       char[] word = new char[numChars];
+       Random gen= new Random();
+       
+       for (int i=0; i<length; i++)
+       {
+           
+           for(int j=0; j<numChars; j++)
+           {
+               //word[j]= list.charAt(generator.nextInt(list.length));
+           }
+           //list[i]= word;
+       }
+       
+       return list;
+   }
+    
+   //private static String randomString(int numChars)
+   //{
+    //}
 }
       
