@@ -42,15 +42,16 @@ public class ArrayUtil
    public static String [] randomStringArray( int length, int numChars)
    {
        String[] list = new String[length];
-       char[] word = new char[numChars];
+       String word;
        Random gen= new Random();
-       
+       int randInt;
        for (int i=0; i<length; i++)
        {
            
            for(int j=0; j<numChars; j++)
            {
-               //word[j]= list.charAt(generator.nextInt(list.length));
+               randInt= gen.nextInt(list.length);
+               //word+= 
            }
            //list[i]= word;
        }
